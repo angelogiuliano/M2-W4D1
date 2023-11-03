@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-cont {
+  width: 100%;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.ul-cont {
+    width: 30%;
+    margin: auto;
+}

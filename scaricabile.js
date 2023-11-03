@@ -153,19 +153,28 @@ const searchJobs = function (job, city) {
     count: 0,
   };
 
-  for (let i = 0; i < jobs.length; i++) {
-    if (
-      jobs[i].title.toLowerCase().includes(job.toLowerCase()) &&
-      jobs[i].location.toLowerCase().includes(city.toLowerCase())
-    ) {
-      foundJobs.result.push(jobs[i]);
-      foundJobs.count += 1;
+  if (
+    job === undefined ||
+    city === undefined ||
+    job.length < 1 ||
+    city.length < 1
+  ) {
+    ul.innerHTML = `<p>Errore, inserisci entrambi i parametri di ricerca.</p>`;
+  } else {
+    for (let i = 0; i < jobs.length; i++) {
+      if (
+        jobs[i].title.toLowerCase().includes(job.toLowerCase()) &&
+        jobs[i].location.toLowerCase().includes(city.toLowerCase())
+      ) {
+        foundJobs.result.push(jobs[i]);
+        foundJobs.count += 1;
 
-      ul.innerHTML += `<li> ${jobs[i].title}, ${jobs[i].location}</li>`;
+        ul.innerHTML += `<li> ${jobs[i].title}, ${jobs[i].location}</li>`;
+      }
     }
-  }
 
-  if (foundJobs.count === 0) {
-    ul.innerHTML = `<p>Non ci sono posizioni disponibili per questa ricerca</p>`;
+    if (foundJobs.count === 0) {
+      ul.innerHTML = `<p>Non ci sono posizioni disponibili per questa ricerca</p>`;
+    }
   }
 };
